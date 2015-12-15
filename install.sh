@@ -17,7 +17,5 @@ cp mazemake mazesolve mazeshow $currentDir/Mazemaker_support
 
 cd $curentDir
 
-bash game.sh
-
 echo deleting source
 rm -rf $folder
