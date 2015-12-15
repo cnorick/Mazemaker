@@ -15,7 +15,7 @@ mazesolve: mazesolve.o mazegrid.o dset.o dset.h dset.cpp mazegrid.h mazegrid.cpp
 mazeshow: mazeshow.o support.h matrix.h support.cpp
 	$(CC) $(CFLAGS) -o mazeshow mazeshow.o support.o
 
-.cpp.o:
+%.o: %.c %.h
 	$(CC) $(CFLAGS) -c $<
 
 clean:
