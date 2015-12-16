@@ -12,7 +12,7 @@ git clone $URL $folder
 cd $folder
 make
 
-cp game.sh $currentDir
+cp maze.sh $currentDir
 cp mazemake mazesolve mazeshow $currentDir/Mazemaker_support
 
 cd $curentDir
