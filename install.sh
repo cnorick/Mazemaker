@@ -4,7 +4,7 @@ URL="https://github.com/cnorick/Mazemaker.git"
 folder="/tmp/Mazesolver"
 currentDir=`pwd`
 
-mkdir mazemaker_support
+mkdir Mazemaker_support
 
 echo downloading source
 git clone $URL $folder
@@ -12,8 +12,8 @@ git clone $URL $folder
 cd $folder
 make
 
-cp mazemaker $currentDir
-cp mazemake mazesolve mazeshow $currentDir/mazemaker_support
+cp maze.sh $currentDir
+cp mazemake mazesolve mazeshow $currentDir/Mazemaker_support
 
 cd $curentDir
 
