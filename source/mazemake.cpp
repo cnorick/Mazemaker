@@ -52,7 +52,7 @@ int main(int argc, char *argv[]){
 
 	nRows = atoi(argv[1]);
 	nCols = atoi(argv[2]);
-	
+
 	Mgrid maze(nRows, nCols);
 	maze.createMaze();
 	maze.write_maze(cout);

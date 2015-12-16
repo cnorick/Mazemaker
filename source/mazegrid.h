@@ -31,7 +31,7 @@ class Mgrid{
 		set<pair<int,int> > walls;
 		vector<Color> vcolor;
 		stack<int> path;
-		
+
 		bool find_path(int);
 		int rand_adj_cell(int,int)const;
 		set<int> all_adj_cells(int,int)const;
