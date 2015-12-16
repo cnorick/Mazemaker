@@ -6,8 +6,9 @@ folder=/opt/Mazemaker/mazemaker_support;
 currentDir=`pwd`;
 
 clean(){
-	echo rm -f maze*.png;
+	echo rm -f maze*.png maze.txt path.txt;
 	rm -f maze*.png;
+	rm -f maze.txt path.txt;
 }
 
 make(){
