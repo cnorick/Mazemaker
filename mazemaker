@@ -1,36 +1,34 @@
 #! /bin/sh
 
-R=$1
-C=$2
-folder=./mazemaker_support
+R=$1;
+C=$2;
+folder=/opt/Mazemaker/mazemaker_support;
+currentDir=`pwd`;
 
 clean(){
-	echo rm -f maze*.png
-	rm -f maze*.png
+	echo rm -f maze*.png;
+	rm -f maze*.png;
 }
 
 make(){
-	cd $folder
+	$folder/mazemake ${R:=60} ${C:=80} > maze.txt;
+	$folder/mazesolve < maze.txt > path.txt;
 
-		./mazemake ${R:=60} ${C:=80} > maze.txt
-		./mazesolve < maze.txt > path.txt 
-
-		mazename="maze_${R}x${C}.png"
-		pathname="maze_path_${R}x${C}.png"
+	mazename="maze_${R}x${C}.png";
+	pathname="maze_path_${R}x${C}.png";
 
 
-		./mazeshow 10 maze.txt | convert - $mazename
-		./mazeshow 10 maze.txt path.txt | convert - $pathname
+	$folder/mazeshow 10 maze.txt | convert - $mazename;
+	$folder/mazeshow 10 maze.txt path.txt | convert - $pathname;
 
-		mv $mazename $pathname ..
-		rm maze.txt path.txt
+	rm maze.txt path.txt;
 }
 
 
 
 
 if [ $R ] && [ $R = "clean" ]; then # make sure variable is not empty
-	clean
+	clean;
 else
-	make
-fi
+	make;
+fi;
