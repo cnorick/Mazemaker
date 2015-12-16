@@ -6,16 +6,18 @@ currentDir=`pwd`
 
 mkdir mazemaker_support
 
-echo downloading source
+echo downloading source...
 git clone $URL $folder
 
-cd $folder
+cd $folder/source
 make
 
-cp mazemaker $currentDir
 cp mazemake mazesolve mazeshow $currentDir/mazemaker_support
+
+cd ..
+cp mazemaker $currentDir
 
 cd $curentDir
 
-echo deleting source
+echo deleting source...
 rm -rf $folder
