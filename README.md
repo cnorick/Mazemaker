@@ -16,6 +16,6 @@ UNIX> ./maze.sh 100 100
 UNIX> ls
 UNIX> Mazemaker_support/  maze_path.png  maze.png  maze.sh*
 ```
-- *maze.png* is the file containing just the maze ready to be sovled
+- *maze.png* is the image of just the maze ready to be sovled
   - This image can be printed and the maze can be solved
 - *maze_path.png* is the same image overlaid with the solution path
