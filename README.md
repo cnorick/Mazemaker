@@ -9,13 +9,23 @@ ___
 ### Using Mazemaker
 You may provide maze.sh with two command line arguments that represent the number of rows and colums of cells for the maze.
 If no arguments are provided, the default is 60 X 80.
-##### Example:
+###### Creating a Maze
 The following code produces a 100 X 100 cell maze:
 ```bash
-UNIX> ./maze.sh 100 100
+UNIX> ./mazemaker 100 100
 UNIX> ls
-UNIX> Mazemaker_support/  maze_path.png  maze.png  maze.sh*
+UNIX> mazemaker_support/  maze_path_100x100.png  maze_100x100.png  mazemaker*
 ```
-- *maze.png* is the image of just the maze ready to be sovled
+- *maze_100x100.png* is the image of just the maze ready to be sovled
   - This image can be printed and the maze can be solved
-- *maze_path.png* is the same image overlaid with the solution path
+- *maze_path_100x100.png* is the same image overlaid with the solution path
+
+###### Deleting Mazes
+The following code deletes all maze and path files in the current directory:
+```bash
+UNIX> ls
+UNIX> mazemaker_support/  maze_path_100x100.png  maze_100x100.png  mazemaker*
+UNIX> ./mazemaker clean
+UNIX> ls
+UNIX> mazemaker_support/ mazemaker*
+```
