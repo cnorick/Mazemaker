@@ -1,0 +1,36 @@
+#! /bin/sh
+
+R=$1
+C=$2
+folder=./mazemaker_support
+
+clean(){
+	echo rm -f maze*.png
+	rm -f maze*.png
+}
+
+make(){
+	cd $folder
+
+		./mazemake ${R:=60} ${C:=80} > maze.txt
+		./mazesolve < maze.txt > path.txt 
+
+		mazename="maze_${R}x${C}.png"
+		pathname="maze_path_${R}x${C}.png"
+
+
+		./mazeshow 10 maze.txt | convert - $mazename
+		./mazeshow 10 maze.txt path.txt | convert - $pathname
+
+		mv $mazename $pathname ..
+		rm maze.txt path.txt
+}
+
+
+
+
+if [ $R ] && [ $R = "clean" ]; then # make sure variable is not empty
+	clean
+else
+	make
+fi

@@ -1,4 +1,3 @@
-
 CC = g++
 CFLAGS = -g -O -Wall
 BIN = mazemake mazesolve mazeshow
