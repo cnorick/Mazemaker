@@ -2,22 +2,45 @@
 
 URL="https://github.com/cnorick/Mazemaker.git"
 folder="/tmp/Mazesolver"
-currentDir=`pwd`
+Dir="/opt/Mazemaker"
 
-mkdir mazemaker_support
 
-echo downloading source...
-git clone $URL $folder
+install(){
+	mkdir $Dir;
+	cd $Dir;
+	mkdir mazemaker_support;
 
-cd $folder/source
-make
+	echo downloading source...;
+	git clone $URL $folder;
+	cd $folder/source;
+	make;
 
-cp mazemake mazesolve mazeshow $currentDir/mazemaker_support
+	cp mazemake mazesolve mazeshow $Dir/mazemaker_support;
+	cd ..;
+	cp mazemaker $Dir;
 
-cd ..
-cp mazemaker $currentDir
+	ln -s $Dir/mazemaker /bin;
 
-cd $curentDir
+	echo deleting source...;
+	rm -rf $folder;
+}
 
-echo deleting source...
-rm -rf $folder
+clean(){
+	if [ -e $Dir ]; then
+		rm -fr $Dir;
+	fi;
+
+	if [ -L /bin/mazemaker ]; then
+		rm -fr /bin/mazemaker;
+	fi;
+}
+
+
+
+if [ $USER != "root" ]; then
+echo must run as root;
+exit;
+fi;
+
+clean;
+install;
