@@ -1,0 +1,21 @@
+#! /bin/sh
+
+R=$1
+C=$2
+folder=./mazemaker_support
+
+
+cd $folder
+
+./mazemake ${R:=60} ${C:=80} > maze.txt
+./mazesolve < maze.txt > path.txt 
+
+mazename="maze_${R}x${C}.png"
+pathname="maze_path_${R}x${C}.png"
+
+
+./mazeshow 10 maze.txt | convert - $mazename
+./mazeshow 10 maze.txt path.txt | convert - $pathname
+
+mv $mazename $pathname ..
+rm maze.txt path.txt
