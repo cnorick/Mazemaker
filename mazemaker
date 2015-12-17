@@ -1,7 +1,7 @@
 #!/bin/sh
 
-folder=/opt/Mazemaker/mazemaker_support;
-currentDir=`pwd`;
+mazemakerDir=/opt/Mazemaker;
+supportDir=$mazemakerDir/mazemaker_support;
 
 parse_input(){
 	if [ $# = 0 ]; then
@@ -34,8 +34,8 @@ parse_input(){
 		;;
 
 		--uninstall)
-		sudo $folder/uninstall.sh
-		shift
+		sudo $mazemakerDir/uninstall.sh
+		exit
 		;;
 
 		*)	# unknown option
@@ -59,15 +59,15 @@ clean(){
 make(){ 
 	local R=$1;
 	local C=$2;
-	$folder/mazemake ${R:=60} ${C:=80} > maze.txt;
-	$folder/mazesolve < maze.txt > path.txt;
+	$supportDir/mazemake ${R:=60} ${C:=80} > maze.txt;
+	$supportDir/mazesolve < maze.txt > path.txt;
 
 	mazename="maze_${R}x${C}.png";
 	pathname="maze_path_${R}x${C}.png";
 
 
-	$folder/mazeshow 10 maze.txt | convert - $mazename;
-	$folder/mazeshow 10 maze.txt path.txt | convert - $pathname;
+	$supportDir/mazeshow 10 maze.txt | convert - $mazename;
+	$supportDir/mazeshow 10 maze.txt path.txt | convert - $pathname;
 
 	rm maze.txt path.txt;
 }
