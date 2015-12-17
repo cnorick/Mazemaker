@@ -29,16 +29,18 @@ compile_source(){
 		sudo rm -rf $tmp;
 	fi;
 
-	sudo git clone $URL $tmp;
+	sudo git clone $URL $tmp || install_error "Couldn't fetch source";
 	cd $tmp/source;
-	sudo make;
+	sudo make || install_error "Could not compile source";
 
-	sudo cp mazemake mazesolve mazeshow $Dir/mazemaker_support;
+	sudo cp mazemake mazesolve mazeshow $Dir/mazemaker_support ||
+		install_error "Could not copy support files to $Dir";
 	cd ..;
-	sudo cp mazemaker $Dir;
+	sudo cp mazemaker $Dir || install_error "Could not copy support files to $Dir";
 
 	if [ ! -L /bin/mazemaker ]; then
-		sudo ln -s $Dir/mazemaker /bin;
+		sudo ln -s $Dir/mazemaker /bin ||
+			install_error "Could not link executable in /bin/mazemaker";
 	fi;
 
 	sudo rm -rf $tmp;
