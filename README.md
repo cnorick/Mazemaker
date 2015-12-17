@@ -5,7 +5,6 @@ For installation on Debian machines, copy the following into the command line:
 ```bash
 wget -q http://git.io/v0rRH -O /tmp/Mazemaker && sudo bash /tmp/Mazemaker
 ```
-You may have to close your terminal and open a new one in order to run mazemaker.
 ___
 ### Using Mazemaker
 You may provide maze.sh with two command line arguments that represent the number of rows and colums of cells for the maze.
@@ -26,7 +25,14 @@ The following code deletes all maze and path files in the current directory:
 ```bash
 UNIX> ls
       maze_path_100x100.png  maze_100x100.png
-UNIX> mazemaker clean
+UNIX> mazemaker --clean
 UNIX> ls
 UNIX>
 ```
+
+###### Uninstalling Mazemaker
+To uninstall Mazemaker, use the --uninstall option:
+```bash
+UNIX> mazemaker --uninstall
+```
+This removes all of the support files for Mazemaker. However, it does not delete any maze files made by Mazemaker.
