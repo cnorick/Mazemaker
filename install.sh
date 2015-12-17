@@ -60,6 +60,7 @@ install_dependencies(){
 
 completed(){
 	install_log "Mazemaker is finished installing"
+	echo type "mazemaker --help to get started. Enjoy!"
 }
 
 
