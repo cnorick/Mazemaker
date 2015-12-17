@@ -33,6 +33,6 @@ UNIX>
 ###### Uninstalling Mazemaker
 To uninstall Mazemaker, use the --uninstall option:
 ```bash
-mazemaker --uninstall
+UNIX> mazemaker --uninstall
 ```
 This removes all of the support files for Mazemaker. However, it does not delete any maze files made by Mazemaker.
