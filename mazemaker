@@ -82,11 +82,11 @@ print_help(){
 	echo 
 	echo "	-h, --help"
 	echo "		Displays this screen"
+	echo
 	echo "	--uninstall"
 	echo "		uninstalls Mazemaker from the machine"
 	echo
 }
-
 
 
 parse_input $@;
