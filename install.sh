@@ -36,7 +36,7 @@ compile_source(){
 	sudo cp mazemake mazesolve mazeshow $Dir/mazemaker_support ||
 		install_error "Could not copy support files to $Dir";
 	cd ..;
-	sudo cp mazemaker $Dir || install_error "Could not copy support files to $Dir";
+	sudo cp mazemaker uninstall.sh $Dir || install_error "Could not copy support files to $Dir";
 
 	if [ ! -L /bin/mazemaker ]; then
 		sudo ln -s $Dir/mazemaker /bin ||
