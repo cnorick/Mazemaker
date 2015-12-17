@@ -1,17 +1,64 @@
-#! /bin/sh
+#!/bin/sh
 
-R=$1;
-C=$2;
 folder=/opt/Mazemaker/mazemaker_support;
 currentDir=`pwd`;
 
+parse_input(){
+	if [ $# = 0 ]; then
+		make
+		exit
+	fi;
+	
+	local R=60
+	local C=80
+
+	while [ "$#" -ge 1 ];
+	do
+	key="$1";
+
+	case $key in
+		-h|--help)
+		print_help;
+		exit
+		;;
+
+		-c|--clean)
+		clean
+		exit
+		;;
+
+		[0-9]*)
+		local R=$1
+		local C=$2
+		shift 2
+		;;
+
+		--uninstall)
+		sudo $folder/uninstall.sh
+		shift
+		;;
+
+		*)	# unknown option
+		echo "Usage: $0 [options] rows columns"
+		exit
+		;;
+
+	esac
+	#shift # past argument or value
+	done
+	
+	make $R $C
+}
+
 clean(){
-	echo rm -f maze*.png maze.txt path.txt;
 	rm -f maze*.png;
 	rm -f maze.txt path.txt;
 }
 
-make(){
+#creates a maze of the given size
+make(){ 
+	local R=$1;
+	local C=$2;
 	$folder/mazemake ${R:=60} ${C:=80} > maze.txt;
 	$folder/mazesolve < maze.txt > path.txt;
 
@@ -25,11 +72,21 @@ make(){
 	rm maze.txt path.txt;
 }
 
+#Displays a list of possible commands
+print_help(){
+	echo "Usage: $0 [options] rows columns"
+	echo
+	echo "OPTIONS"
+	echo "	-c, --clean"
+	echo "		Removes maze files from the current directory"
+	echo 
+	echo "	-h, --help"
+	echo "		Displays this screen"
+	echo "	--uninstall"
+	echo "		uninstalls Mazemaker from the machine"
+	echo
+}
 
 
 
-if [ $R ] && [ $R = "clean" ]; then # make sure variable is not empty
-	clean;
-else
-	make;
-fi;
+parse_input $@;
