@@ -58,9 +58,14 @@ install_dependencies(){
 		install_error "Couldn't install dependencies";
 }
 
+completed(){
+	install_log "Mazemaker is finished installing"
+}
+
 
 
 create_directories;
 update_system_packages;
 install_dependencies;
 compile_source;
+completed;
